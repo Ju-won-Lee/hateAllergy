@@ -2,6 +2,7 @@ package com.example.test
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
-    private var next: Button? =null //사진을 찍은뒤 다음 화면으로 넘어가는 버튼
     private lateinit var cameraExecutor: ExecutorService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         // Set up the listeners for take photo and video capture buttons
         viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
 //        viewBinding.videoCaptureButton.setOnClickListener { captureVideo() }
-        viewBinding.nextButton.setOnClickListener { next() }
+        viewBinding.nextButton.setOnClickListener { startActivity(Intent(this@MainActivity, com.example.test1.next::class.java)) }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
